@@ -10,5 +10,7 @@ Fotos de Wikimedia Commons, reducidas de tamaño (sin otras modificaciones).
 | `f_emergencia.jpg` | [Emergency stop button.jpg](https://commons.wikimedia.org/wiki/File:Emergency_stop_button.jpg) | Cjp24 | CC BY-SA 3.0 |
 | `f_motor.jpg` | [Induction motor.JPG](https://commons.wikimedia.org/wiki/File:Induction_motor.JPG) | ZngZng | CC BY-SA 3.0 |
 | `f_bloqueo.jpg` | [Lockout on hoist brake.JPG](https://commons.wikimedia.org/wiki/File:Lockout_on_hoist_brake.JPG) | Wtshymanski | CC BY-SA 4.0 |
+| `f_tablero_distribucion.jpg` | [RCCB and Miniature Circuit Breaker..jpg](https://commons.wikimedia.org/wiki/File:RCCB_and_Miniature_Circuit_Breaker..jpg) | Balurbala | CC BY-SA 3.0 |
+| `f_termomagnetico_interior.jpg` | [MCB Hager C10.jpg](https://commons.wikimedia.org/wiki/File:MCB_Hager_C10.jpg) | Marco-279 | CC BY-SA 4.0 |
 
 Licencias: CC BY-SA 3.0 https://creativecommons.org/licenses/by-sa/3.0/ · CC BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0/ · CC0 https://creativecommons.org/publicdomain/zero/1.0/

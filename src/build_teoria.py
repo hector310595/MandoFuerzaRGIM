@@ -155,6 +155,26 @@ card(s, 9.15, 1.6, 3.6, 4.3, "Cómo reconocerlos", [
     "Portafusible: tapa abatible con el cartucho gG",
     "Bornes numerados igual que el símbolo"], fill=GTINT, head_color=DGREEN, size=13)
 
+s = d.content("El termomagnético por dentro",
+              notes="(2 min) Corte de un termomagnético de 1 polo. Las dos protecciones están en el "
+                    "nombre: TÉRMICA = la lámina bimetálica (5) se calienta con la sobrecarga, se curva "
+                    "y dispara el mecanismo (lenta, depende del tiempo); MAGNÉTICA = la bobina (7) "
+                    "atrae su núcleo ante un cortocircuito y dispara al instante. La cámara de "
+                    "extinción (8) apaga el arco que se forma al separarse los contactos (3). El relé "
+                    "térmico del motor solo tiene la parte bimetálica: por eso no corta cortocircuitos.")
+foto(s, "mcb_interior", 0.6, 1.4, 4.6, 4.8, "Termomagnético de 1 polo, cortado")
+table(s, 5.5, 1.5, 7.25, [
+    ["N.º", "Pieza", "Función"],
+    ["1", "Palanca", "Conectar / desconectar a mano"],
+    ["2", "Mecanismo", "Abre los contactos al disparar"],
+    ["3", "Contactos", "Fijo y móvil"],
+    ["4", "Bornes", "Entrada y salida del cable"],
+    ["5", "Bimetal", "Sobrecarga (disparo térmico, lento)"],
+    ["6", "Tornillo de calibración", "Ajuste de fábrica del bimetal"],
+    ["7", "Bobina", "Cortocircuito (disparo magnético, instantáneo)"],
+    ["8", "Cámara de extinción", "Apaga el arco al abrir"],
+], [0.6, 2.25, 4.4], size=12, row_h=0.47)
+
 s = d.content("¿Dónde está cada protección en un arranque directo?",
               notes="(5 min) Recorrer el esquema de fuerza de arriba hacia abajo: Q1 protege la línea "
                     "y permite seccionar; KM1 es el que maniobra (no protege); F1 protege el motor "
@@ -203,11 +223,12 @@ card(s, 8.45, 1.6, 4.3, 4.3, "Consignación", [
 s = d.content("En la realidad: protecciones y bloqueo",
               notes="(2 min) Fotos reales. Diferencial: se ven el botón TEST, la palanca azul, la "
                     "sensibilidad 0,03 A (30 mA) y el pequeño esquema impreso en el frente. "
-                    "Termomagnético: palanca y la curva/corriente impresa (C10). Bloqueo: dispositivo "
+                    "Tablero de distribución: a la izquierda el diferencial y luego una fila de "
+                    "termomagnéticos, cada uno con su curva y corriente (C10). Bloqueo: dispositivo "
                     "rojo de consignación con varios candados personales colgando — uno por cada "
                     "persona que trabaja en la máquina.")
 ph = [k for k in ("diferencial", "termomagnetico", "bloqueo") if k in fotos.FOTOS]
-caps = {"diferencial": "Diferencial 2P, 30 mA", "termomagnetico": "Termomagnético en riel DIN",
+caps = {"diferencial": "Diferencial 2P, 30 mA", "termomagnetico": "Diferencial + termomagnéticos en riel",
         "bloqueo": "Bloqueo con candados personales"}
 wcol = 12.15 / len(ph)
 for i, k in enumerate(ph):

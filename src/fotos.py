@@ -16,6 +16,9 @@ FOTOS = {
     "emergencia": ("f_emergencia.jpg", "Emergency stop button.jpg", "Cjp24", "CC BY-SA 3.0"),
     "motor": ("f_motor.jpg", "Induction motor.JPG", "ZngZng", "CC BY-SA 3.0"),
     "bloqueo": ("f_bloqueo.jpg", "Lockout on hoist brake.JPG", "Wtshymanski", "CC BY-SA 4.0"),
+    "termomagnetico": ("f_tablero_distribucion.jpg", "RCCB and Miniature Circuit Breaker..jpg", "Balurbala",
+                       "CC BY-SA 3.0"),
+    "mcb_interior": ("f_termomagnetico_interior.jpg", "MCB Hager C10.jpg", "Marco-279", "CC BY-SA 4.0"),
 }
 
 
