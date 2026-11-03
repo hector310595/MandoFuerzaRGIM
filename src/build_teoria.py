@@ -4,12 +4,21 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(__file__))
+import fotos  # noqa: E402
 from pptx.enum.text import MSO_ANCHOR, PP_ALIGN  # noqa: E402
 from pptx_utils import (DGREEN, GREEN, GTINT, INK, MUTED, NAVY, RED, ROOT, TINT, WHITE, Deck, box,  # noqa: E402
                         caption, card, circle_num, image, table, text)
 
 OUT = os.path.join(ROOT, "sesion1_teoria", "RGIM_S1_Seguridad_Mando_Fuerza_Teoria.pptx")
 d = Deck("Seguridad eléctrica · Mando y fuerza · RGIM")
+
+def foto(slide, clave, x, y, w, h, cap=None):
+    """Foto real con su crédito (obligatorio por la licencia) debajo."""
+    image(slide, fotos.ruta(clave), x, y, w, h - 0.62)
+    if cap:
+        caption(slide, x, y + h - 0.6, w, cap, size=12, color=INK)
+    caption(slide, x, y + h - 0.3, w, fotos.credito(clave), size=8, color=MUTED)
+
 
 # ------------------------------------------------------------------ apertura
 d.cover()
@@ -191,6 +200,19 @@ card(s, 8.45, 1.6, 4.3, 4.3, "Consignación", [
     "Detector: probarlo antes y después en una fuente conocida",
     "Medir entre fases y entre fase y tierra"], size=14)
 
+s = d.content("En la realidad: protecciones y bloqueo",
+              notes="(2 min) Fotos reales. Diferencial: se ven el botón TEST, la palanca azul, la "
+                    "sensibilidad 0,03 A (30 mA) y el pequeño esquema impreso en el frente. "
+                    "Termomagnético: palanca y la curva/corriente impresa (C10). Bloqueo: dispositivo "
+                    "rojo de consignación con varios candados personales colgando — uno por cada "
+                    "persona que trabaja en la máquina.")
+ph = [k for k in ("diferencial", "termomagnetico", "bloqueo") if k in fotos.FOTOS]
+caps = {"diferencial": "Diferencial 2P, 30 mA", "termomagnetico": "Termomagnético en riel DIN",
+        "bloqueo": "Bloqueo con candados personales"}
+wcol = 12.15 / len(ph)
+for i, k in enumerate(ph):
+    foto(s, k, 0.6 + i * wcol, 1.45, wcol - 0.15, 4.75, caps[k])
+
 s = d.content("Buenas prácticas en el tablero",
               notes="(5 min) Colores según IEC 60204-1 (seguridad de máquinas) y colores de "
                     "conductores según IEC 60445. Tensión de mando reducida: 24 V es más segura; en "
@@ -309,6 +331,20 @@ for i, (img, cap) in enumerate([("sym_bobina", "Bobina A1-A2"), ("sym_contactor_
     image(s, img, x + 0.1, y + 0.1, 1.75, 1.5)
     caption(s, x, y + 1.65, 1.95, cap, size=11, color=INK)
 
+s = d.content("El contactor real, por fuera y por dentro",
+              notes="(3 min) Izquierda: un contactor comercial; se leen A1 y A2 arriba, 1 L1, 3 L2, "
+                    "5 L3 y 13 en la entrada; 2 T1, 4 T2, 6 T3 y 14 en la salida. Derecha: el mismo "
+                    "tipo de aparato desarmado. Al energizar la BOBINA, la culata se imanta y atrae la "
+                    "ARMADURA MÓVIL, que arrastra a todos los contactos móviles a la vez: los NA cierran "
+                    "y los NC abren. Al cortar la corriente, el MUELLE DE RETORNO los devuelve al "
+                    "reposo. Por eso en el esquema todos los contactos de KM1 se mueven juntos.")
+foto(s, "contactor", 0.6, 1.4, 4.0, 4.8, "Bornes impresos: A1-A2, 1-2, 3-4, 5-6, 13-14")
+foto(s, "despiece", 4.8, 1.4, 7.95, 3.95, "Despiece: bobina, culata, armadura móvil, muelle y contactos")
+box(s, 4.8, 5.4, 7.95, 0.8, fill=GTINT)
+text(s, 4.95, 5.42, 7.7, 0.75, [[("Bobina energizada → ", {"bold": True, "color": DGREEN}),
+                                 ("la armadura cierra y mueve TODOS los contactos a la vez; el muelle los "
+                                  "devuelve al reposo.", {})]], size=13, anchor=MSO_ANCHOR.MIDDLE)
+
 s = d.content("Símbolos que usaremos (IEC 60617)",
               notes="(2 min) Repasar rápido; el catálogo completo está en la guía del alumno y en el "
                     "solucionario. Énfasis: el contacto NA se dibuja abierto y el NC cerrado porque "
@@ -341,6 +377,14 @@ for i, (h, b) in enumerate([("Pulsador", "Cabezal + bloque NA o NC"),
     box(s, x, 5.4, 2.9, 0.75, fill=TINT if i % 2 == 0 else GTINT)
     text(s, x + 0.1, 5.42, 2.7, 0.7, [[(h + ": ", {"bold": True, "color": NAVY}), (b, {})]], size=12,
          anchor=MSO_ANCHOR.MIDDLE)
+
+s = d.content("En la realidad: puerta de mando y motor",
+              notes="(2 min) Izquierda: panel de mando de una máquina con la parada de emergencia "
+                    "(seta roja sobre fondo amarillo), pulsadores, un piloto y un selector. Derecha: "
+                    "motor asíncrono trifásico; arriba se ve la caja de bornes, donde están U1 V1 W1 / "
+                    "U2 V2 W2 y los puentes estrella o triángulo.")
+foto(s, "emergencia", 0.6, 1.45, 6.0, 4.75, "Parada de emergencia, pulsadores y piloto")
+foto(s, "motor", 6.75, 1.45, 6.0, 4.75, "Motor trifásico con su caja de bornes")
 
 # --------------------------------------------------------- 3 · circuitos
 d.section("3", "Circuitos de mando y fuerza", "Marcha-paro, dos puntos, inversión y estrella-triángulo",
@@ -479,6 +523,14 @@ card(s, 6.8, 1.6, 5.95, 4.3, "Laboratorio CADe_SIMU (3 h)", [
     "Marcha-paro con pilotos y térmico",
     "Dos puntos de mando e inversión de giro",
     "Estrella-triángulo y reto secuencial"], fill=GTINT, head_color=DGREEN)
+
+s = d.content("Créditos de las fotografías",
+              notes="Las fotos tienen licencias libres de Wikimedia Commons; las CC BY-SA exigen "
+                    "citar autor y licencia. Las ilustraciones y esquemas son propios del curso.")
+rows = [["Foto", "Autor", "Licencia", "Fuente (Wikimedia Commons)"]]
+for k, (f, t, a, lic) in fotos.FOTOS.items():
+    rows.append([t, a, lic, fotos.url(k).replace("https://", "")])
+table(s, 0.6, 1.5, 12.15, rows, [3.3, 1.9, 1.4, 5.55], size=10, row_h=0.42)
 
 d.cover()
 os.makedirs(os.path.dirname(OUT), exist_ok=True)

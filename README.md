@@ -8,13 +8,13 @@ CADe_SIMU.
 
 | Carpeta / archivo | Para quién | Qué es |
 |---|---|---|
-| `sesion1_teoria/RGIM_S1_Seguridad_Mando_Fuerza_Teoria.pptx` | Docente (proyectar) | 33 diapositivas con plantilla PUCP (incluye ilustraciones de los aparatos reales); notas del orador con tiempos |
+| `sesion1_teoria/RGIM_S1_Seguridad_Mando_Fuerza_Teoria.pptx` | Docente (proyectar) | 37 diapositivas con plantilla PUCP (ilustraciones y fotos de los aparatos reales); notas del orador con tiempos |
 | `sesion2_laboratorio/RGIM_S2_Laboratorio_CADeSIMU.pptx` | Docente (proyectar) | Enunciados y preguntas guía; **las soluciones son diapositivas ocultas** |
 | `sesion2_laboratorio/RGIM_Guia_Laboratorio_Alumno.docx` | Alumnos | Repaso, catálogo de símbolos, CADe_SIMU, ejercicios L0–L5 y lista de verificación |
 | `docente/RGIM_Solucionario_Laboratorio.docx` | Docente | Catálogo de símbolos y, por ejercicio: fuerza, mando, funcionamiento, tabla de estados, componentes y errores típicos |
 | `docente/RGIM_Guia_CADeSIMU_Paso_a_Paso.docx` | Docente | Procedimiento base en CADe_SIMU, problemas frecuentes y armado paso a paso de cada ejercicio |
 | `docente/RGIM_Plan_de_Sesiones.docx` | Docente | Cronograma de ambas sesiones, preparación y evaluación |
-| `figuras/` | — | Símbolos, esquemas e ilustraciones de aparatos reales (`a_*`, generadas con `src/aparatos.py`) en PNG y SVG |
+| `figuras/` | — | Símbolos, esquemas e ilustraciones de aparatos reales (`a_*`, generadas con `src/aparatos.py`) en PNG y SVG; `figuras/fotos/` tiene fotos de Wikimedia Commons con sus créditos en `CREDITOS.md` |
 | `cadesimu/` | Docente | Lugar para guardar los archivos de CADe_SIMU probados |
 | `src/` | — | Generadores (Python) de todo el material |
 

@@ -5,6 +5,7 @@ set -euo pipefail
 cd "$(dirname "$0")"
 python3 src/esquemas.py
 python3 src/aparatos.py
+python3 src/fotos.py
 python3 src/build_teoria.py
 python3 src/build_lab.py
 python3 src/build_docs.py
