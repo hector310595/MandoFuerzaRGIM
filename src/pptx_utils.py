@@ -231,7 +231,7 @@ def circle_num(slide, x, y, d, label, fill=GREEN, color=WHITE, size=16):
 
 def image(slide, name, x, y, w, h, align="center", name_obj=None):
     """Inserta figuras/<name>.png ajustada (sin deformar) dentro de la caja."""
-    path = os.path.join(FIG, name + ".png")
+    path = os.path.join(FIG, name if os.path.splitext(name)[1] else name + ".png")
     iw, ih = Image.open(path).size
     r = min(w / iw, h / ih)
     W, H = iw * r, ih * r
@@ -243,7 +243,7 @@ def image(slide, name, x, y, w, h, align="center", name_obj=None):
         xx = x + w - W
     yy = y + (h - H) / 2
     pic = slide.shapes.add_picture(path, Inches(xx), Inches(yy), Inches(W), Inches(H))
-    pic.name = name_obj or name
+    pic.name = name_obj or os.path.basename(name)
     return pic, (xx, yy, W, H)
 
 
