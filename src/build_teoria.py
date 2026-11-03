@@ -132,6 +132,20 @@ for i, (img, h, prot, nota) in enumerate(rows):
     text(s, 6.2, y + 0.1, 3.3, 0.8, [prot], size=15, anchor=MSO_ANCHOR.MIDDLE)
     text(s, 9.5, y + 0.1, 3.2, 0.8, [nota], size=13, color=MUTED, anchor=MSO_ANCHOR.MIDDLE)
 
+s = d.content("Así se ven en el tablero",
+              notes="(2 min) Si es posible, llevar los aparatos reales del laboratorio y pasarlos de "
+                    "mano en mano. Señalar: (1) todos se montan a presión en el riel DIN de 35 mm; "
+                    "(2) la numeración impresa junto a cada tornillo es la MISMA del símbolo "
+                    "(1-2, 3-4, 5-6); (3) el diferencial se reconoce por el botón de prueba T, que "
+                    "debe probarse periódicamente; (4) el fusible es un cartucho que se cambia "
+                    "abriendo el portafusible SIN tensión.")
+image(s, "a_protecciones", 0.6, 1.45, 8.3, 4.6)
+card(s, 9.15, 1.6, 3.6, 4.3, "Cómo reconocerlos", [
+    "Termomagnético: palanca y curva/corriente (C16)",
+    "Diferencial: botón T y IΔn 30 mA",
+    "Portafusible: tapa abatible con el cartucho gG",
+    "Bornes numerados igual que el símbolo"], fill=GTINT, head_color=DGREEN, size=13)
+
 s = d.content("¿Dónde está cada protección en un arranque directo?",
               notes="(5 min) Recorrer el esquema de fuerza de arriba hacia abajo: Q1 protege la línea "
                     "y permite seccionar; KM1 es el que maniobra (no protege); F1 protege el motor "
@@ -164,6 +178,18 @@ for i, (h, b) in enumerate([("Cortar", "Abrir todas las fuentes de tensión (vis
     circle_num(s, x + 0.82, 1.9, 0.62, str(i + 1))
     text(s, x + 0.1, 2.7, 2.05, 0.5, [h], size=17, bold=True, color=NAVY, align=PP_ALIGN.CENTER)
     text(s, x + 0.15, 3.3, 1.95, 1.9, [b], size=14, align=PP_ALIGN.CENTER)
+
+s = d.content("Bloquear y verificar: lo que se usa",
+              notes="(2 min) Reglas 2 y 3 en concreto. Cada persona que interviene pone SU candado "
+                    "(con un pasador múltiple si son varias) y su tarjeta con nombre y fecha; nadie "
+                    "retira el candado de otro. Antes de tocar, verificar ausencia de tensión con "
+                    "un detector bipolar, probándolo antes y después en una fuente conocida.")
+image(s, "a_consignacion", 0.6, 1.45, 7.6, 4.6)
+card(s, 8.45, 1.6, 4.3, 4.3, "Consignación", [
+    "Un candado por persona; la llave la guarda quien trabaja",
+    "Tarjeta con nombre, fecha y motivo",
+    "Detector: probarlo antes y después en una fuente conocida",
+    "Medir entre fases y entre fase y tierra"], size=14)
 
 s = d.content("Buenas prácticas en el tablero",
               notes="(5 min) Colores según IEC 60204-1 (seguridad de máquinas) y colores de "
@@ -206,8 +232,23 @@ card(s, 9.45, 1.6, 3.3, 4.3, "Esquema desarrollado", [
     "Se reconoce por su nombre: KM1",
     "Todo se dibuja en reposo"], size=14)
 
+s = d.content("El mismo arranque, en un tablero real",
+              notes="(3 min) Este es el tablero del ejercicio L1 (arranque directo). Arriba Q1 y el "
+                    "fusible de mando F2; al centro el contactor KM1 con el térmico F1 enchufado "
+                    "debajo; abajo la bornera X1 (salidas al motor y a la puerta, con bornes PE "
+                    "verde-amarillo). Los pulsadores y pilotos van en la PUERTA y llegan con una "
+                    "manguera flexible. La etiqueta del aparato en el tablero es la misma que en "
+                    "el esquema: así se encuentra un aparato al revisar una falla.")
+image(s, "a_tablero", 0.6, 1.4, 6.3, 4.75)
+card(s, 7.15, 1.6, 5.6, 4.3, "Del esquema al tablero", [
+    [("Placa de montaje: ", {"bold": True}), ("Q1, F2, KM1, F1 y bornera X1 sobre riel DIN", {})],
+    [("Canaletas: ", {"bold": True}), ("ocultan y ordenan los cables", {})],
+    [("Puerta: ", {"bold": True}), ("S0, S1, H1, H2 (mando y señalización)", {})],
+    [("Etiquetas: ", {"bold": True}), ("las mismas designaciones que el esquema", {})]],
+     fill=GTINT, head_color=DGREEN, size=14)
+
 s = d.content("Designación de los aparatos",
-              notes="(5 min) Usamos la designación clásica que emplean CADe_SIMU y la mayoría de "
+              notes="(4 min) Usamos la designación clásica que emplean CADe_SIMU y la mayoría de "
                     "catálogos en la región. Mencionar que la norma vigente (IEC 81346-2) agrupa por "
                     "función: el contactor de potencia también se designa Q y los pulsadores S, por "
                     "ejemplo. Lo importante es ser consistente en todo el esquema.")
@@ -228,7 +269,7 @@ card(s, 8.5, 1.6, 4.25, 4.3, "Regla", [
      head_color=DGREEN, size=14)
 
 s = d.content("Numeración de bornes: el número dice qué contacto es",
-              notes="(7 min) Ejercicio rápido: mostrar un contacto 23-24 y preguntar qué es "
+              notes="(5 min) Ejercicio rápido: mostrar un contacto 23-24 y preguntar qué es "
                     "(2.º contacto, normalmente abierto). Primer dígito = número de orden; segundo "
                     "dígito: 1-2 NC, 3-4 NA. Funciones especiales: 5-6 NC y 7-8 NA "
                     "(temporizados, térmico). La numeración de temporizadores varía algo entre "
@@ -251,8 +292,25 @@ for i, (img, cap) in enumerate([("sym_na", "NA 13-14"), ("sym_nc", "NC 21-22"),
     image(s, img, x, y, 2.0, 1.6)
     caption(s, x, y + 1.6, 2.0, cap, size=12, color=INK)
 
+s = d.content("Los números están impresos en el aparato",
+              notes="(3 min) El contactor muestra arriba A1 y las entradas 1/L1, 3/L2, 5/L3; abajo "
+                    "A2 y las salidas 2/T1, 4/T2, 6/T3. Su contacto auxiliar NA trae 13-14. El relé "
+                    "térmico se enchufa directamente en 2/T1, 4/T2, 6/T3 y repite esas salidas para "
+                    "el motor; a un costado tiene 95-96 (NC, va al mando) y 97-98 (NA, piloto de "
+                    "falla), el dial para ajustar la corriente del motor y el botón azul de rearme. "
+                    "Pedir a los alumnos que señalen en el esquema de L1 dónde va cada borne.")
+image(s, "a_contactor_termico", 0.6, 1.4, 5.6, 4.75)
+for i, (img, cap) in enumerate([("sym_bobina", "Bobina A1-A2"), ("sym_contactor_3p", "Principales 1-2, 3-4, 5-6"),
+                                ("sym_na", "Auxiliar NA 13-14"), ("sym_termico_3p", "Térmico (fuerza)"),
+                                ("sym_termico_95", "Térmico 95-96"), ("sym_termico_97", "Térmico 97-98")]):
+    x = 6.55 + (i % 3) * 2.1
+    y = 1.5 + (i // 3) * 2.3
+    box(s, x, y, 1.95, 2.15, fill=TINT)
+    image(s, img, x + 0.1, y + 0.1, 1.75, 1.5)
+    caption(s, x, y + 1.65, 1.95, cap, size=11, color=INK)
+
 s = d.content("Símbolos que usaremos (IEC 60617)",
-              notes="(5 min) Repasar rápido; el catálogo completo está en la guía del alumno y en el "
+              notes="(2 min) Repasar rápido; el catálogo completo está en la guía del alumno y en el "
                     "solucionario. Énfasis: el contacto NA se dibuja abierto y el NC cerrado porque "
                     "el esquema está en REPOSO.")
 syms = [("sym_na", "Contacto NA"), ("sym_nc", "Contacto NC"), ("sym_pulsador_na", "Pulsador NA"),
@@ -266,6 +324,23 @@ for i, (img, cap) in enumerate(syms):
     box(s, x, y, 1.9, 2.1, fill=TINT)
     image(s, img, x + 0.1, y + 0.1, 1.7, 1.45)
     caption(s, x, y + 1.6, 1.9, cap, size=12, color=INK)
+
+s = d.content("Mando en la puerta: pulsadores, pilotos y temporizador",
+              notes="(2 min) Cada pulsador es un cabezal de 22 mm más un BLOQUE de contactos que se "
+                    "monta detrás: el bloque define si es NA (13-14) o NC (11-12), no el color. La "
+                    "parada de emergencia es una seta roja sobre fondo amarillo con bloque NC y "
+                    "enclavamiento. El piloto lleva un portalámpara X1-X2. El temporizador se monta "
+                    "en el riel y se ajusta con su dial; la numeración de sus contactos varía según "
+                    "el fabricante (en el curso: 55-56 y 67-68).")
+image(s, "a_mando", 0.6, 1.5, 12.15, 3.75)
+for i, (h, b) in enumerate([("Pulsador", "Cabezal + bloque NA o NC"),
+                            ("Emergencia", "Seta roja, fondo amarillo, NC"),
+                            ("Piloto", "Lámpara X1-X2: verde marcha, rojo falla"),
+                            ("Temporizador", "Dial de tiempo; bobina A1-A2")]):
+    x = 0.6 + i * 3.06
+    box(s, x, 5.4, 2.9, 0.75, fill=TINT if i % 2 == 0 else GTINT)
+    text(s, x + 0.1, 5.42, 2.7, 0.7, [[(h + ": ", {"bold": True, "color": NAVY}), (b, {})]], size=12,
+         anchor=MSO_ANCHOR.MIDDLE)
 
 # --------------------------------------------------------- 3 · circuitos
 d.section("3", "Circuitos de mando y fuerza", "Marcha-paro, dos puntos, inversión y estrella-triángulo",
@@ -334,6 +409,18 @@ card(s, 8.1, 1.6, 4.65, 4.3, "Idea clave", [
     "Motor apto para Δ a la tensión de red"], size=15)
 text(s, 0.6, 5.0, 7.2, 0.9, ["Seis bornes: U1 V1 W1 (inicio) y U2 V2 W2 (final de cada bobina). "
                              "Los puentes definen la conexión."], size=14, color=MUTED)
+
+s = d.content("La caja de bornes del motor",
+              notes="(2 min) Al abrir la caja de bornes se ven los seis espárragos y unas plaquitas "
+                    "metálicas (puentes). Con dos puentes horizontales el motor queda en estrella; "
+                    "con tres verticales, en triángulo. En el arranque estrella-triángulo se QUITAN "
+                    "los puentes: los contactores KM2 y KM3 hacen ese trabajo, por eso llegan seis "
+                    "cables al motor. Leer la placa de características: p. ej. 380 V Δ / 660 V Y "
+                    "indica que en una red de 380 V el motor trabaja en triángulo.")
+image(s, "a_motor_bornes", 0.6, 1.45, 12.15, 3.9)
+text(s, 0.6, 5.45, 12.15, 0.7, [[("Arranque Y-Δ: ", {"bold": True, "color": NAVY}),
+                                ("se retiran los puentes y llegan 6 cables; KM2 hace la estrella y KM3 "
+                                 "el triángulo.", {})]], size=14, align=PP_ALIGN.CENTER)
 
 s = d.content("Estrella-triángulo: fuerza",
               notes="(5 min) KM1 (línea) alimenta U1 V1 W1. KM2 une W2-U2-V2 (punto estrella). KM3 "

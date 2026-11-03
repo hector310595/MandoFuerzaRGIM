@@ -76,6 +76,17 @@ card(s, 6.8, 1.6, 5.95, 4.3, "Bornes", [
     "Térmico 95-96 (NC) y 97-98 (NA)",
     "Temporizador 55-56 (NC) y 67-68 (NA)"], fill=GTINT, head_color=DGREEN, size=15)
 
+s = d.content("Lo que dibujas en CADe_SIMU existe en el tablero",
+              notes="Mostrar antes de L1: cada aparato del esquema tiene una ubicación física y la "
+                    "misma etiqueta. Si el laboratorio tiene un tablero didáctico, señalar en él Q1, "
+                    "KM1, F1, la bornera y la puerta.")
+image(s, "a_tablero", 0.6, 1.4, 6.3, 4.75)
+card(s, 7.15, 1.6, 5.6, 4.3, "Esquema L1 → tablero", [
+    "Q1 y F2 arriba, en el riel DIN",
+    "KM1 con F1 enchufado debajo",
+    "Bornera X1: motor y puerta; PE verde-amarillo",
+    "Puerta: S0, S1, H1, H2"], fill=GTINT, head_color=DGREEN, size=15)
+
 for e in EJ:
     s = d.content(e["titulo"],
                   notes="Tiempo sugerido: %d min. Dejar trabajar en parejas; mostrar la solución "
