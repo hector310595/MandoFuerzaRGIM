@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="102.816pt" height="60.48pt" viewBox="0 0 102.816 60.48" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 60.48 
+L 102.816 60.48 
+L 102.816 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="line2d_1">
+    <path d="M 86.184 21.924 
+L 58.968 21.924 
+" clip-path="url(#p3c5e2bf1b4)" style="fill: none; stroke-dasharray: 3,2; stroke-dashoffset: 0; stroke: #1f4e9c"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 58.968 21.924 
+L 55.3392 21.924 
+L 55.3392 18.2952 
+L 51.7104 18.2952 
+L 51.7104 21.924 
+L 48.0816 21.924 
+" clip-path="url(#p3c5e2bf1b4)" style="fill: none; stroke: #1a1a1a; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 81.648 7.56 
+L 81.648 17.5392 
+" clip-path="url(#p3c5e2bf1b4)" style="fill: none; stroke: #1a1a1a; stroke-width: 1.5"/>
+   </g>
+   <g id="line2d_4">
+    <path d="M 81.648 37.8 
+L 81.648 27.8208 
+" clip-path="url(#p3c5e2bf1b4)" style="fill: none; stroke: #1a1a1a; stroke-width: 1.5"/>
+   </g>
+   <g id="line2d_5">
+    <path d="M 81.648 17.5392 
+L 88.3008 17.5392 
+" clip-path="url(#p3c5e2bf1b4)" style="fill: none; stroke: #1a1a1a; stroke-width: 1.5"/>
+   </g>
+   <g id="line2d_6">
+    <path d="M 81.648 27.8208 
+L 90.72 16.0272 
+" clip-path="url(#p3c5e2bf1b4)" style="fill: none; stroke: #1a1a1a; stroke-width: 1.5"/>
+   </g>
+   <g id="text_1">
+    <!-- 95 -->
+    <g style="fill: #444444" transform="translate(85.2768 13.130387) scale(0.07 -0.07)">
+     <defs>
+      <path id="Inter-Regular-54a" d="M 1884 -63 
+C 2938 -63 3588 866 3588 2513 
+C 3588 4225 2728 4706 1963 4719 
+C 1006 4734 381 4025 381 3156 
+C 381 2259 1044 1616 1847 1616 
+C 2334 1616 2744 1856 2994 2238 
+L 3031 2238 
+C 3031 1109 2594 463 1884 463 
+C 1394 463 1103 772 1006 1184 
+L 419 1184 
+C 528 441 1094 -63 1884 -63 
+z
+M 1934 2134 
+C 1372 2134 963 2588 963 3159 
+C 963 3734 1391 4197 1953 4197 
+C 2525 4197 2947 3706 2947 3172 
+C 2947 2625 2500 2134 1934 2134 
+z
+" transform="scale(0.015625)"/>
+      <path id="Inter-Regular-545" d="M 1956 -63 
+C 2853 -63 3509 594 3509 1488 
+C 3509 2388 2881 3047 2028 3047 
+C 1706 3047 1397 2934 1206 2775 
+L 1181 2775 
+L 1341 4134 
+L 3291 4134 
+L 3291 4656 
+L 841 4656 
+L 566 2350 
+L 1122 2281 
+C 1306 2422 1631 2525 1919 2525 
+C 2503 2525 2928 2078 2928 1478 
+C 2928 888 2519 459 1956 459 
+C 1488 459 1106 759 1069 1175 
+L 494 1175 
+C 525 463 1138 -63 1956 -63 
+z
+" transform="scale(0.015625)"/>
+     </defs>
+     <use xlink:href="#Inter-Regular-54a"/>
+     <use xlink:href="#Inter-Regular-545" transform="translate(62.015625 0)"/>
+    </g>
+   </g>
+   <g id="text_2">
+    <!-- 96 -->
+    <g style="fill: #444444" transform="translate(85.2768 37.322387) scale(0.07 -0.07)">
+     <defs>
+      <path id="Inter-Regular-547" d="M 2019 -63 
+C 2969 -63 3588 634 3588 1503 
+C 3588 2403 2925 3044 2128 3044 
+C 1644 3044 1231 2813 981 2425 
+L 944 2425 
+C 944 3544 1375 4194 2091 4194 
+C 2575 4194 2866 3888 2969 3484 
+L 3550 3484 
+C 3438 4216 2872 4719 2091 4719 
+C 1034 4719 381 3788 381 2150 
+C 381 434 1241 -63 2019 -63 
+z
+M 2019 459 
+C 1447 459 1028 947 1028 1497 
+C 1028 2041 1469 2528 2034 2528 
+C 2597 2528 3013 2072 3013 1503 
+C 3013 922 2578 459 2019 459 
+z
+" transform="scale(0.015625)"/>
+     </defs>
+     <use xlink:href="#Inter-Regular-54a"/>
+     <use xlink:href="#Inter-Regular-547" transform="translate(62.015625 0)"/>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p3c5e2bf1b4">
+   <rect x="0" y="0" width="102.816" height="60.48"/>
+  </clipPath>
+ </defs>
+</svg>
