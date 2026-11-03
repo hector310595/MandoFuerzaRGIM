@@ -1,0 +1,141 @@
+"""Ejercicios del laboratorio CADe_SIMU: enunciados, preguntas guía y soluciones.
+Fuente única para la presentación, la guía del alumno, el solucionario y la guía paso a paso."""
+
+TENSION = ("Fuerza: 3 × 380 V, 60 Hz. Mando: 220 V entre L1 y N, protegido con su propio "
+           "fusible.")
+
+EJ = [
+    dict(
+        key="L0", titulo="L0 · Primer circuito: lámpara con pulsador", minutos=10,
+        enunciado="Encienda una lámpara de señalización H1 mientras se mantiene presionado un "
+                  "pulsador S1. El circuito se alimenta a 220 V (L1-N) y se protege con un fusible F2.",
+        preguntas=["¿El pulsador debe ser NA o NC? ¿Por qué?",
+                   "¿Dónde va el fusible: antes o después del pulsador?",
+                   "¿Qué pasa al soltar S1? ¿Cómo haría que la lámpara quede encendida?"],
+        fuerza=None, mando="m_lampara",
+        funcionamiento=["S1 (NA) cierra mientras se pulsa → H1 enciende.",
+                        "Al soltar, S1 vuelve a abrir → H1 se apaga (no hay memoria).",
+                        "Para que quede encendida haría falta una autorretención (ejercicio L1)."],
+        estados=None,
+        componentes=[("Alimentación monofásica", "L1 y N (220 V)"), ("Fusible", "F2"),
+                     ("Pulsador NA", "S1"), ("Lámpara / piloto", "H1")],
+        errores=["Usar un pulsador NC: la lámpara queda encendida y se apaga al pulsar."]),
+    dict(
+        key="L1", titulo="L1 · Arranque directo con marcha-paro", minutos=35,
+        enunciado="Un motor trifásico M1 (380 V) arranca con un pulsador de marcha S1 y se detiene "
+                  "con un pulsador de paro S0. El motor debe seguir funcionando al soltar S1. Se "
+                  "protege con un interruptor Q1 y un relé térmico F1. Un piloto verde H1 indica "
+                  "marcha y uno rojo H2 indica disparo del térmico.",
+        preguntas=["Dibuje primero la fuerza: ¿en qué orden van Q1, KM1, F1 y M1?",
+                   "¿Qué contacto de KM1 mantiene la bobina cuando suelta S1? ¿En paralelo con qué?",
+                   "¿Dónde va el contacto 95-96 de F1 y por qué en serie?",
+                   "¿Qué contactos encienden H1 y H2?",
+                   "Simule una sobrecarga: ¿qué se apaga y qué se enciende?"],
+        fuerza="f_arranque_directo", mando="m_marcha_paro",
+        funcionamiento=["S1 → bobina KM1 → contactos principales cierran → M1 gira.",
+                        "KM1 13-14 (en paralelo con S1) mantiene la bobina: autorretención.",
+                        "KM1 43-44 enciende H1 (marcha).",
+                        "S0 (NC) abre el circuito → KM1 cae → M1 se detiene.",
+                        "Sobrecarga: F1 95-96 abre (para) y F1 97-98 cierra (H2 enciende)."],
+        estados=[["Estado", "KM1", "M1", "H1", "H2"],
+                 ["Reposo", "—", "parado", "—", "—"],
+                 ["Tras pulsar S1", "●", "gira", "●", "—"],
+                 ["Tras pulsar S0", "—", "parado", "—", "—"],
+                 ["Disparo de F1", "—", "parado", "—", "●"]],
+        componentes=[("Alimentación trifásica", "L1, L2, L3"), ("Interruptor 3P", "Q1"),
+                     ("Contactor (3 principales + auxiliares)", "KM1"), ("Relé térmico", "F1"),
+                     ("Motor trifásico", "M1"), ("Alimentación monofásica de mando", "L1, N"),
+                     ("Fusible", "F2"), ("Pulsador NC / NA", "S0 / S1"),
+                     ("Contactos auxiliares de KM1", "13-14 y 43-44"),
+                     ("Contactos del térmico", "95-96 y 97-98"), ("Pilotos", "H1 verde, H2 rojo")],
+        errores=["Poner KM1 13-14 en serie con S1: el motor se para al soltar S1.",
+                 "Olvidar 95-96 de F1 en el mando: el térmico dispara pero el motor sigue.",
+                 "Nombrar distinto la bobina y sus contactos (KM1 vs Km1): el contacto no actúa."]),
+    dict(
+        key="L2", titulo="L2 · Mando desde dos puntos", minutos=15,
+        enunciado="Modifique L1 para que el motor pueda arrancarse y detenerse desde dos puestos: "
+                  "S1/S0 en el tablero y S11/S01 junto a la máquina.",
+        preguntas=["¿Los paros van en serie o en paralelo? ¿Y las marchas?",
+                   "¿Qué cambia en el esquema de fuerza?",
+                   "Compárelo con la selectora O y la válvula Y de la semana de neumática."],
+        fuerza="f_arranque_directo", mando="m_dos_puntos",
+        funcionamiento=["Paros S0 y S01 (NC) en serie: cualquiera abre el circuito.",
+                        "Marchas S1 y S11 (NA) en paralelo entre sí y con KM1 13-14: cualquiera arranca.",
+                        "La fuerza no cambia."],
+        estados=None,
+        componentes=[("Lo mismo que L1 más", ""), ("Pulsador NC", "S01"), ("Pulsador NA", "S11")],
+        errores=["Paros en paralelo: para detener habría que pulsar los dos a la vez."]),
+    dict(
+        key="L3", titulo="L3 · Inversión de giro con enclavamiento", minutos=35,
+        enunciado="Un motor M1 debe poder girar en sentido horario (S1, contactor KM1) y antihorario "
+                  "(S2, contactor KM2). Un único paro S0 detiene el motor. Nunca deben estar KM1 y "
+                  "KM2 cerrados a la vez.",
+        preguntas=["¿Qué fases intercambia KM2 respecto a KM1?",
+                   "¿Qué pasaría en la fuerza si KM1 y KM2 cierran juntos?",
+                   "¿Qué contacto de KM2 pone en serie con la bobina KM1 (y viceversa)?",
+                   "Para pasar de horario a antihorario, ¿hay que pulsar S0 primero?",
+                   "Reto: ¿cómo cambiaría el sentido sin pasar por S0? (pulsadores dobles)"],
+        fuerza="f_inversion", mando="m_inversion",
+        funcionamiento=["KM1 entrega L1-L2-L3 al motor; KM2 entrega L3-L2-L1 (giro inverso).",
+                        "Cada marcha tiene su autorretención (KM1 13-14, KM2 13-14).",
+                        "Enclavamiento eléctrico: KM2 21-22 en serie con la bobina KM1 y KM1 21-22 en "
+                        "serie con la bobina KM2.",
+                        "Con KM1 activo, pulsar S2 no hace nada: primero S0."],
+        estados=[["Estado", "KM1", "KM2", "M1"],
+                 ["Reposo", "—", "—", "parado"],
+                 ["S1", "●", "—", "horario"],
+                 ["S2 con KM1 activo", "●", "—", "horario (S2 bloqueado)"],
+                 ["S0 y luego S2", "—", "●", "antihorario"]],
+        componentes=[("Lo mismo que L1 más", ""), ("Contactor", "KM2"), ("Pulsador NA", "S2"),
+                     ("Contactos NC auxiliares", "KM1 21-22 y KM2 21-22")],
+        errores=["Olvidar el enclavamiento: CADe_SIMU muestra el cortocircuito al pulsar S1 y S2.",
+                 "Cruzar las tres fases o ninguna: el motor no invierte."]),
+    dict(
+        key="L4", titulo="L4 · Arranque estrella-triángulo temporizado", minutos=40,
+        enunciado="Un motor de 6 bornes arranca en estrella y, tras 5 s, pasa automáticamente a "
+                  "triángulo. Contactores: KM1 de línea, KM2 de estrella y KM3 de triángulo. Un "
+                  "temporizador a la conexión KT controla el cambio. S1 marcha, S0 paro, F1 térmico.",
+        preguntas=["¿Qué bornes une KM2 (estrella) y cuáles une KM3 (triángulo)?",
+                   "¿Qué contacto de KT desconecta KM2 al cumplirse el tiempo? ¿Cuál conecta KM3?",
+                   "¿Por qué KM2 y KM3 deben estar enclavados entre sí?",
+                   "Ajuste KT a 5 s y verifique en la simulación la secuencia de contactores."],
+        fuerza="f_estrella_triangulo", mando="m_estrella_triangulo",
+        funcionamiento=["S1 → KM1 (autorretención), KT y KM2 (por KT 55-56 y KM3 21-22): estrella.",
+                        "Al cumplirse t: KT 55-56 abre → KM2 cae; KT 67-68 cierra → KM3 entra "
+                        "(KM2 21-22 ya está cerrado): triángulo.",
+                        "KM2 21-22 y KM3 21-22 impiden estrella y triángulo a la vez.",
+                        "S0 o F1 95-96 desconectan todo."],
+        estados=[["Etapa", "KM1", "KT", "KM2 (Y)", "KM3 (Δ)"],
+                 ["Reposo", "—", "—", "—", "—"],
+                 ["0 a t (arranque)", "●", "contando", "●", "—"],
+                 ["Después de t", "●", "●", "—", "●"],
+                 ["S0 / F1", "—", "—", "—", "—"]],
+        componentes=[("Lo mismo que L1 más", ""), ("Motor de 6 bornes", "M1 (U1 V1 W1 / U2 V2 W2)"),
+                     ("Contactores", "KM2 (estrella), KM3 (triángulo)"),
+                     ("Temporizador a la conexión", "KT, t = 5 s; contactos 55-56 y 67-68"),
+                     ("Contactos NC auxiliares", "KM2 21-22, KM3 21-22")],
+        errores=["Usar un temporizador a la desconexión: el cambio ocurre al revés.",
+                 "Unir mal U1-W2, V1-U2, W1-V2 en KM3: cortocircuito o motor en sentido inverso.",
+                 "Sin enclavamiento KM2/KM3: estrella y triángulo juntos = cortocircuito."]),
+    dict(
+        key="L5", titulo="L5 · Reto: arranque secuencial de dos motores", minutos=15,
+        enunciado="Una faja (M1) y un triturador (M2). Con S1 arranca M1 y, 5 s después, M2 arranca "
+                  "solo. S0 detiene ambos. Si dispara el térmico de cualquiera de los dos, se "
+                  "detienen ambos.",
+        preguntas=["¿Qué temporizador usa y qué lo energiza?",
+                   "¿Dónde pone los contactos 95-96 de F1 y F2 para que cualquiera detenga todo?",
+                   "¿Necesita M2 su propia autorretención? ¿Por qué?"],
+        fuerza="f_dos_motores", mando="m_secuencial",
+        funcionamiento=["F1 95-96 y F2 95-96 en serie con S0: cualquier falla corta todo el mando.",
+                        "S1 → KM1 (autorretención) y KT.",
+                        "Tras t: KT 67-68 cierra → KM2 (M2 arranca).",
+                        "KM2 no necesita autorretención: depende de KT, que depende de KM1."],
+        estados=[["Estado", "KM1", "KT", "KM2"],
+                 ["Reposo", "—", "—", "—"],
+                 ["S1, antes de t", "●", "contando", "—"],
+                 ["Después de t", "●", "●", "●"],
+                 ["S0, F1 o F2", "—", "—", "—"]],
+        componentes=[("Fuerza", "Q1, KM1 + F1 + M1, KM2 + F2 + M2"),
+                     ("Mando", "F3, F1 95-96, F2 95-96, S0, S1, KM1 13-14, KT (t = 5 s) 67-68, KM2")],
+        errores=["Poner F2 95-96 solo en la rama de KM2: un disparo de M2 no detiene la faja."]),
+]
